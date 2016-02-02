@@ -6,6 +6,14 @@ app.controller('bodyController', function($scope) {
 		// debugger
 		return new Array(num);
 	};
+	$scope.add = function(qty) {
+		if (!qty) {
+			qty = 1;
+		} else {
+			qty = Number(qty);
+		}
+		console.log(qty);
+	};
 });
 
 app.filter('stockFilter', function(){

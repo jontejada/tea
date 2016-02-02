@@ -13,10 +13,13 @@
 </head>
 <body ng-controller="bodyController">
 	<div class="container">
+		<div>
+			<h1 class="big"><i class="fa fa-leaf"></i> tea shop</h1>
+		</div>
 		<div ng-repeat="oneTea in data">
 	 		<div class="row">
 	 			<div class="col-md-8">
-	 				<h1>{{oneTea.name}} <i ng-repeat="star in getNumber(oneTea.rating) track by $index" class="fa fa-star"></i><i ng-repeat="star in getNumber(4-oneTea.rating) track by $index" class="fa fa-star-o"></i></h1>
+	 				<h1>{{oneTea.name}} <i ng-repeat="star in getNumber(oneTea.rating) track by $index" class="fa fa-star"></i><!-- <i ng-repeat="star in getNumber(4-oneTea.rating) track by $index" class="fa fa-star-o"></i> --></h1>
 	 			</div>
 	 		</div>
 	 		<div class="row">
@@ -25,15 +28,16 @@
 						<div class="col-md-3">
 							<img class="clipped" src="{{oneTea.imageUrl}}">
 						</div>
-						<div class="col-md-9">
+						<div class="col-md-8 col-md-offset-1">
 							<p>{{oneTea.ingredients}}</p>
 							<h4>{{oneTea.price / 100 | currency}} {{oneTea.inStock | stockFilter}}</h4>
 							<h4>caffeine scale: {{oneTea.caffeineScale}}</h4>
+							<h4>categories: <span ng-repeat="cat in oneTea.categories">{{cat}}  </span>{{}}</h4>
 						</div>
 					</div>
  				</div>
  				<div class="col-md-1">
- 					<button>add to cart</button>
+ 					<button ng-click="add(quantity)">add to cart</button>
  					<br>
  					quantity:
  					<select ng-model="quantity">

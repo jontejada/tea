@@ -1,5 +1,6 @@
 body {
-	/*background-color: #33658A;*/
+	background-color: white;
+	/*background: linear-gradient(to left, #FAFAFA, white);*/
 	font-family: 'Exo 2', sans-serif;
 	color:#86BBD8;
 }
@@ -46,4 +47,10 @@ select {
 
 select:focus {
 	outline: none;
+}
+
+.big {
+	font-weight: 900;
+	font-size: 500%;
+	text-align: left;
 }

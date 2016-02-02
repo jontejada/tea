@@ -1,0 +1,49 @@
+body {
+	/*background-color: #33658A;*/
+	font-family: 'Exo 2', sans-serif;
+	color:#86BBD8;
+}
+
+.clipped {
+	-webkit-clip-path: inset(25px 20px 40px 15px);
+	/* values are from-top, from-right, from-bottom, from-left */
+	margin: -25px -20px -40px -15px;
+}
+
+.oneTeaDiv {
+	width:80%;
+	/*background-color: white;*/
+	border-radius :2px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #86BBD8;
+	margin-bottom:20px;
+	z-index: 2;
+}	
+
+h1 {
+	margin-bottom: -6px;
+	z-index: 99;
+	text-align: center;
+}
+
+button {
+	background-color: #86BBD8;
+	border-radius: 2px;
+	color:white;
+	border:none;
+}
+
+select {
+	margin: 10px;
+	height: 25px;
+	background: #86BBD8;
+	/*background: rgba(136,195,234,0.9);*/
+	color:white;
+	font-size: 110%;
+	border:none;
+	}
+
+select:focus {
+	outline: none;
+}

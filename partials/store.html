@@ -21,8 +21,9 @@
 		<option value="price">Price: low to high</option>
 		<option value="-price">Price: high to low</option>
 	</select>
-
- 	<!-- <button ng-click="togglePrice()">Order</button> -->
+	<div id="cartButton">
+		<a href="/#/cart"><button>Checkout | Bag: {{cartsize}}</button></a>
+	</div>
 </div>
 <div ng-repeat="oneTea in data | filter:query | filter:cat | orderBy:sortorder">
 	<div class="row">
@@ -45,7 +46,8 @@
 		</div>
 		</div>
 		<div class="col-md-1">
-			<button ng-click="add(quantity)">add to cart</button>
+
+<!-- 			<button ng-click="add(quantity)">add to cart</button>
 			<br>
 			quantity:
 			<select ng-model="quantity">
@@ -53,6 +55,33 @@
 					{{qty}}
 				</option>
 			</select>
+ -->
+			
+			<form name="addToCart" ng-submit="add(oneTea)">
+	 			<button type="submit">add to cart</button>
+				<br>
+				quantity:
+				<select name="quantity" ng-model="oneTea.quantity">
+<!-- 					<option ng-repeat="qty in [1,2,3,4,5,6,7,8]">
+						{{qty}}
+					</option>
+ -->				
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+ 				</select>
+			</form>
+
+
+
+
+
 		</div>
 	</div>
 </div>

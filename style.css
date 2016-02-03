@@ -54,10 +54,11 @@ select:focus {
 	font-size: 500%;
 	text-align: left;
 	text-decoration: none;
+	margin-bottom: 30px;
 }
 
 #searchBar {
-	text-align: center;
-	
+	/*text-align: center;*/
+
 }
 

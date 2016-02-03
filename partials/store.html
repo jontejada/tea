@@ -1,0 +1,58 @@
+<div id="searchBar">
+	<label>
+		Search: <input type="text" name="search" id="search" ng-model="query">
+	</label>
+	Category:
+	<select ng-model="cat">
+		<option></option>
+		<option>Dark</option>
+		<option>Cold</option>
+		<option>Awesome</option>
+		<option>Dry</option>
+		<option>Hot</option>
+		<option>Summer</option>
+		<option>Lucid</option>
+		<option>Warm</option>
+		<option>Winter</option>
+		<option>Spring</option>
+	</select>
+	Order by:
+	<select ng-model="sortorder">
+		<option value="price">Price: low to high</option>
+		<option value="-price">Price: high to low</option>
+	</select>
+
+ 	<!-- <button ng-click="togglePrice()">Order</button> -->
+</div>
+<div ng-repeat="oneTea in data | filter:query | filter:cat | orderBy:sortorder">
+	<div class="row">
+		<div class="col-md-8">
+			<h1>{{oneTea.name}} <i ng-repeat="star in getNumber(oneTea.rating) track by $index" class="fa fa-star"></i><!-- <i ng-repeat="star in getNumber(4-oneTea.rating) track by $index" class="fa fa-star-o"></i> --></h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="oneTeaDiv col-md-8">
+		<div class="row">
+			<div class="col-md-3">
+				<img class="clipped" src="{{oneTea.imageUrl}}">
+			</div>
+			<div class="col-md-8 col-md-offset-1">
+				<p>{{oneTea.ingredients}}</p>
+				<h4>{{oneTea.price / 100 | currency}} {{oneTea.inStock | stockFilter}}</h4>
+				<h4>caffeine scale: {{oneTea.caffeineScale}}</h4>
+				<h4>categories: <span ng-repeat="cat in oneTea.categories">{{cat}}  </span>{{}}</h4>
+			</div>
+		</div>
+		</div>
+		<div class="col-md-1">
+			<button ng-click="add(quantity)">add to cart</button>
+			<br>
+			quantity:
+			<select ng-model="quantity">
+				<option ng-repeat="qty in [1,2,3,4,5,6,7,8]">
+					{{qty}}
+				</option>
+			</select>
+		</div>
+	</div>
+</div>

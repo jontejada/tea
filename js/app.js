@@ -1,9 +1,8 @@
 var app = angular.module('teaApp',['ngRoute']);
 
-app.controller('bodyController', function($scope) {
+app.controller('BodyController', function($scope) {
 	$scope.data = data;
 	$scope.getNumber = function(num) {
-		// debugger
 		return new Array(num);
 	};
 	$scope.add = function(qty) {
@@ -20,5 +19,13 @@ app.filter('stockFilter', function(){
 	return function(input){
 		return input.toString().replace("true","In Stock").replace("false","Out of Stock");
 	};
+});
+
+app.config(function($routeProvider){
+	$routeProvider
+		.when('/', {
+			templateUrl: 'partials/store.html',
+			controller: 'BodyController'
+		});
 });
 

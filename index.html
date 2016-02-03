@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="teaApp">
 <head>
-	<title>tea shop</title>
+	<title>mean tea shop</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link href='https://fonts.googleapis.com/css?family=Exo+2:100,300' rel='stylesheet' type='text/css'>
@@ -11,43 +11,12 @@
 	<script src="js/data.js"></script>
 	<script src="js/app.js"></script>
 </head>
-<body ng-controller="bodyController">
+<body ng-controller="BodyController">
 	<div class="container">
 		<div>
-			<h1 class="big"><i class="fa fa-leaf"></i> tea shop</h1>
+			<a href="/#/"><h1 class="big"><i class="fa fa-leaf"></i> mean tea shop</h1></a>
 		</div>
-		<div ng-repeat="oneTea in data">
-	 		<div class="row">
-	 			<div class="col-md-8">
-	 				<h1>{{oneTea.name}} <i ng-repeat="star in getNumber(oneTea.rating) track by $index" class="fa fa-star"></i><!-- <i ng-repeat="star in getNumber(4-oneTea.rating) track by $index" class="fa fa-star-o"></i> --></h1>
-	 			</div>
-	 		</div>
-	 		<div class="row">
-	 			<div class="oneTeaDiv col-md-8">
-					<div class="row">
-						<div class="col-md-3">
-							<img class="clipped" src="{{oneTea.imageUrl}}">
-						</div>
-						<div class="col-md-8 col-md-offset-1">
-							<p>{{oneTea.ingredients}}</p>
-							<h4>{{oneTea.price / 100 | currency}} {{oneTea.inStock | stockFilter}}</h4>
-							<h4>caffeine scale: {{oneTea.caffeineScale}}</h4>
-							<h4>categories: <span ng-repeat="cat in oneTea.categories">{{cat}}  </span>{{}}</h4>
-						</div>
-					</div>
- 				</div>
- 				<div class="col-md-1">
- 					<button ng-click="add(quantity)">add to cart</button>
- 					<br>
- 					quantity:
- 					<select ng-model="quantity">
- 						<option ng-repeat="qty in [1,2,3,4,5,6,7,8]">
- 							{{qty}}
- 						</option>
- 					</select>
- 				</div>
-	 		</div>
-		</div>
+		<div ng-view></div>
 	</div>
 </body>
 </html>

@@ -74,3 +74,6 @@ select:focus {
 	right:40px;
 }
 
+#cartButton {
+	display: inline;
+}

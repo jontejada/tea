@@ -1,1 +1,36 @@
 <h2>cart</h2>
+<h3>Subtotal: {{ totalPrice / 100 | currency }}</h3>
+<table>
+	<tr>
+		<td>Product</td>
+		<td>Quantity</td>
+		<td>Sub-total</td>
+	</tr>
+	<tr ng-repeat="oneTea in data track by $index">
+		<td>
+			<h3>{{ oneTea.name }}</h3>
+			<img src="{{ oneTea.imageUrl }}">
+			<p><strong>Caffeine Scale: </strong> {{ oneTea.caffeineScale }}</p>
+			<p><strong>Ingredients: </strong>{{ oneTea.ingredients }}</p>
+			<p><strong>Rating: </strong>{{ oneTea.rating }}</p>
+		</td>
+		<td>
+			{{ oneTea.quantity }}
+		</td>
+		<td>
+			{{ oneTea.quantity * oneTea.price / 100 | currency }}
+		</td>
+		<td>
+			<button ng-click="toggle = !toggle">Edit</button>
+			<button ng-click="delete(oneTea)">Delete</button>
+			
+			<form ng-submit="edit(oneTea)" ng-show="toggle">
+				<input type="number" ng-model="oneTea.quantity">
+				<button ng-click="save(toggle)">Save</button>
+			</form>
+		</td>
+	</tr>
+</table>
+<div ng-repeat="oneTea in data track by $index">
+	{{ oneTea.name }}
+</div>

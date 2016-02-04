@@ -1,29 +1,65 @@
 var app = angular.module('teaApp',['ngRoute']);
 
 app.controller('StoreController', function($scope,cartService) {
-	$scope.data = data; //don't touch this
-	$scope.cartsize = cartService.length;
+
+	$scope.data = data.map(function(obj) {
+		if (!obj.quantity) {
+			obj.quantity = 0;
+		}
+		obj.more = "1";
+		return obj;
+	}); //don't touch this
+
+	console.log($scope.data);
+
+	$scope.cartsize = 0;
 	$scope.getNumber = function(num) {
 		return new Array(num);
 	};
+
+	updateCartbutton(cartService, $scope);
+
 	$scope.add = function(tea) {
-		var qty = Number(tea.quantity);
-		if (!qty) {
-			qty = 1;
+
+		if (cartService.indexOf(tea) === -1) {
+			var numberToAdd = parseInt(tea.more);
+			tea.quantity += numberToAdd;
+			cartService.push(tea);
 		} else {
-			qty = Number(qty);
+			var number = parseInt(cartService[cartService.indexOf(tea)].more);
+			cartService[cartService.indexOf(tea)].quantity += number;
 		}
-		// console.log(tea);
-		// console.log(qty);
-		cartService.push(tea);
-		console.log(cartService);
-		$scope.cartsize += qty;
+
+		updateCartbutton(cartService, $scope);
+		
 	};
 });
 
 app.controller('CartController', function($scope,cartService) {
 
+	$scope.data = cartService;
+	$scope.totalPrice = 0;
+	updateTotalPrice(cartService, $scope);
+
+	$scope.save = function(toggle) {
+		updateTotalPrice(cartService, $scope);
+		toggle = !toggle;
+	} 
 });
+
+function updateTotalPrice(cartService, $scope) {
+	$scope.totalPrice = 0;
+	cartService.forEach(function(obj) {
+		$scope.totalPrice += obj.quantity * obj.price;
+	});
+}
+
+function updateCartbutton(cartService, $scope) {
+	$scope.cartsize = 0;
+	cartService.forEach(function(obj) {
+			$scope.cartsize += obj.quantity;
+	});
+}
 
 app.filter('stockFilter', function(){
 	return function(input){

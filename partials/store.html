@@ -22,8 +22,15 @@
 		<option value="-price">Price: high to low</option>
 	</select>
 	<div id="cartButton">
-		<a href="/#/cart"><button>Checkout | Bag: {{cartsize}}</button></a>
+		<a href="/#/cart"><button>Go to cart <i class="fa fa-shopping-cart"></i> {{cartsize}} items</button></a>
 	</div>
+	<span class="fa-stack fa-5x" id="actualcart">
+		<i class="fa fa-shopping-cart fa-stack-2x"></i>
+		<strong class="fa-stack-1x" id="cartnum">{{cartsize}}</strong>
+	</span>
+
+
+
 </div>
 <div ng-repeat="oneTea in data | filter:query | filter:cat | orderBy:sortorder">
 	<div class="row">

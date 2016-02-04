@@ -1,6 +1,6 @@
 <h2>cart</h2>
 <h3>Subtotal: {{ totalPrice / 100 | currency }}</h3>
-<table>
+<table class="table table-bordered">
 	<tr>
 		<td>Product</td>
 		<td>Quantity</td>
@@ -26,11 +26,8 @@
 			
 			<form ng-submit="edit(oneTea)" ng-show="toggle">
 				<input type="number" ng-model="oneTea.quantity">
-				<button ng-click="save(toggle)">Save</button>
+				<button ng-click="toggle = save(toggle)">Save</button>
 			</form>
 		</td>
 	</tr>
 </table>
-<div ng-repeat="oneTea in data track by $index">
-	{{ oneTea.name }}
-</div>

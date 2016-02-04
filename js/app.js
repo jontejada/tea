@@ -26,8 +26,9 @@ app.controller('StoreController', function($scope,cartService) {
 			tea.quantity += numberToAdd;
 			cartService.push(tea);
 		} else {
-			var number = parseInt(cartService[cartService.indexOf(tea)].more);
-			cartService[cartService.indexOf(tea)].quantity += number;
+			var teaIndex = cartService[cartService.indexOf(tea)];
+			var number = parseInt(teaIndex.more);
+			teaIndex.quantity += number;
 		}
 
 		updateCartbutton(cartService, $scope);
@@ -44,7 +45,15 @@ app.controller('CartController', function($scope,cartService) {
 	$scope.save = function(toggle) {
 		updateTotalPrice(cartService, $scope);
 		toggle = !toggle;
+		return toggle;
 	} 
+
+	$scope.delete = function(oneTea) {
+		oneTea.quantity = 0;
+		var index = cartService.indexOf(oneTea);
+		cartService.splice(index, 1);
+		updateTotalPrice(cartService, $scope);
+	}
 });
 
 function updateTotalPrice(cartService, $scope) {

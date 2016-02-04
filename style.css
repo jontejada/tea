@@ -62,3 +62,15 @@ select:focus {
 
 }
 
+#cartnum {
+	color:white;
+	margin-top:-0.3em;
+	font-size: 75%
+}
+
+#actualcart {
+	position: absolute;
+	top:20px;
+	right:40px;
+}
+

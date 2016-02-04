@@ -133,7 +133,7 @@ caffeine-scale {
   backface-visibility: hidden;
   transition: all .3s ease-in-out;
 }
-.semi-circle--mask::before {
+caffeine-scale::before {
   content: "";
   position: absolute;
   top: 0;

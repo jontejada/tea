@@ -18,8 +18,11 @@
 	</select>
 	Order by:
 	<select ng-model="sortorder">
-		<option value="price">Price: low to high</option>
-		<option value="-price">Price: high to low</option>
+		<option value="price">price: low to high</option>
+		<option value="-price">price: high to low</option>
+		<option value="caffeineScale">caffeine: low to high</option>
+		<option value="-caffeineScale">caffeine: high to low</option>
+
 	</select>
 	<div id="cartButton">
 		<a href="/#/cart"><button>Go to cart <i class="fa fa-shopping-cart"></i> {{cartsize}} items</button></a>
@@ -44,26 +47,27 @@
 			<div class="col-md-3">
 				<img class="clipped" src="{{oneTea.imageUrl}}">
 			</div>
-			<div class="col-md-8 col-md-offset-1">
+			<div class="col-md-5 col-md-offset-1">
 				<p>{{oneTea.ingredients}}</p>
 				<h4>{{oneTea.price / 100 | currency}} {{oneTea.inStock | stockFilter}}</h4>
 				<h4>caffeine scale: {{oneTea.caffeineScale}}</h4>
-				<h4>categories: <span ng-repeat="cat in oneTea.categories">{{cat}}  </span>{{}}</h4>
+				<h4>categories: <span ng-repeat="cat in oneTea.categories">{{cat}}  </span></h4>
+			</div>
+			<div class="col-md-2">
+				<br>
+				<br>
+				<h4>Caffeine Meter:</h4>
+				<div class="box gauge--1">
+				    <div class="mask">
+				        <div class="semi-circle"></div>
+				        <caffeine-scale mg="oneTea.caffeineScale" class="semi-circle--mask"></caffeine-scale>
+<!-- 				    <div ng-style="{'transform': 'rotate(' + {{ oneTea.caffeineScale / 1.6 }} + 'deg)'}" class="semi-circle--mask"></div>
+ -->				    </div>
+				</div>
 			</div>
 		</div>
 		</div>
 		<div class="col-md-1">
-
-<!-- 			<button ng-click="add(quantity)">add to cart</button>
-			<br>
-			quantity:
-			<select ng-model="quantity">
-				<option ng-repeat="qty in [1,2,3,4,5,6,7,8]">
-					{{qty}}
-				</option>
-			</select>
- -->
-			
 			<form name="addToCart" ng-submit="add(oneTea)">
 	 			<button type="submit">add to cart</button>
 				<br>

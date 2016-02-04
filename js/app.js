@@ -10,7 +10,7 @@ app.controller('StoreController', function($scope,cartService) {
 		return obj;
 	}); //don't touch this
 
-	console.log($scope.data);
+	// console.log($scope.data);
 
 	$scope.cartsize = 0;
 	$scope.getNumber = function(num) {
@@ -92,3 +92,27 @@ app.config(function($routeProvider){
 app.service('cartService', [function() {
 	return [];
 }]);
+
+app.directive('caffeineScale', function(){
+	return {
+		scope: {
+			mg: '='
+		},
+		link: function(scope,element,attrs) {
+			var meter = scope.mg / 1.6;
+			element.css('transform', 'rotate(' + meter + 'deg)');
+		}
+	};
+});
+
+
+
+
+
+
+
+
+
+
+
+

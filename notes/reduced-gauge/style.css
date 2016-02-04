@@ -1,20 +1,3 @@
-.body {
-  font-size: 16;
-}
-
-.header {
-  padding: 1rem;
-  margin: 0 0 2rem 0;
-  background: #f2f2f2;
-}
-
-h1 {
-  font-size: 2rem;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .content {
   display: flex;
 }
